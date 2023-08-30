@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <app-search-pokemon></app-search-pokemon>
+        <app-loader *ngIf="loader"></app-loader>
+        <div (click)="selectPokemon(pokemon)" *ngFor="let pokemon of pokemonList" class="col s6 m4" >
+            <div class="card horizontal" pkmnBorderCard="#009688" borderStyle="dashed" borderHeight="180">
+                <div class="card-image">
+                    <img [src]='pokemon.picture'>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <p>{{pokemon.name}}</p>
+                        <p><small>{{pokemon.created | date:'d-MM-yyyy' }}</small></p>
+                        <span *ngFor="let type of pokemon.types">
+                            <span class="chip" [style.background-color]="type | pokemonTypeColor: pokemonTypeList" >{{type}}</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a (click)="addPokemon()" class="btn-floating btn-large waves-effect waves-light red z-depth-3" style="position: fixed; bottom: 25px; right: 25px;"><i class="material-icons">add</i></a>
+    </div>
+</div>

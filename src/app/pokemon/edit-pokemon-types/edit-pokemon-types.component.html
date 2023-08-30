@@ -1,0 +1,32 @@
+<!-- Modal Structure -->
+<h4>Ajouter / Modifier et supprimer vos types de Pokemon !</h4>
+<div cdkDropList class="collection collection-drag" (cdkDropListDropped)="updateTypePositions($event)">
+  <div *ngFor="let type of typeList" id="type_{{type.id}}" class="collection-item collection-item-drag" cdkDrag>
+    <div *ngIf="isTypeInEditMode(type.name)" class="col s12">
+        <div class="row">
+          <div  class="input-field col s2.5" style="padding-top: 5%;">
+            <input type="color" value="{{type.color}}" style="width: 25px;" id="typecolor" name="typecolor" #typecolor/>
+          </div>
+          <div class="input-field col s6">
+            <input type="text" placeholder="Name" value="{{type.name}}" #typename/>
+          </div>
+          <div class="input-field col s2.5" style="padding-top: 5%;" (click)="updateType(type, typename.value, typecolor.value)">
+            <i class="material-icons" style="color:green; cursor: pointer;">done</i>
+          </div>
+        </div>
+    </div>
+    <div *ngIf="!isTypeInEditMode(type.name)" class="chip" [style.background-color]="type.name | pokemonTypeColor: typeList">{{type.name}}</div>
+    <span *ngIf="!isTypeInEditMode(type.name)" class="right">
+      <i class="material-icons editdeletebutton" (click)="editMode(type)">edit</i>
+      <i class="material-icons editdeletebutton" (click)="deleteType(type)">delete</i>
+    </span>
+  </div>
+  <div class="collection-item active inactive center collection-item-addelement" [class.active]="!isEditMode()" [class.inactive]="isEditMode()" (click)="addType()"><i class="material-icons">add</i></div>
+</div>
+<hr />
+<div class="right">
+  <a class="waves-effect waves-light btn" (click)="closeDialog()">Annuler</a>
+  <a class="waves-effect waves-light btn" (click)="savePokemonTypes()" style="margin-left: 10px;">Sauvegarder</a>
+</div>
+<br />
+<br />

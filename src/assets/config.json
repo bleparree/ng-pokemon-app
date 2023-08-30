@@ -1,0 +1,6 @@
+{
+    "apiMode": true,
+    "rest": {
+      "apiUrl": "http://localhost:3000/"
+    }
+  }
