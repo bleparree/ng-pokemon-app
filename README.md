@@ -19,10 +19,8 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 * Code TODO
 * Autre TODO
-  * Ajouter à GitLab
-  * Avoir un search progressif
-  * Ajouter un selecteur d'image
-  * Ajouter un aspirateur de donnée sur le site `https://www.pokemon.com/fr/pokedex/pikachu`
+  * Ajouter un aspirateur de donnée sur le site `https://www.pokemon.com/fr/pokedex/001`
   * Avoir les script d'init de la bdd (créa ou à partir d'un backup)
   * Ajouter des tests unitaires
   * Ajouter des tests e2e
+  * Host sur le PC fixe

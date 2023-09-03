@@ -17,7 +17,7 @@ export class Pokemon {
 
     /** Initialize a new pokemon with a defaut picture url and an empty list of type */
     constructor() {
-        this.picture = 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/xxx.png';
+        this.picture = 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png';
         this.types = [];
     }
 }

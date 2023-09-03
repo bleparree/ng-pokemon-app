@@ -21,16 +21,29 @@
           <!-- Pokemon Picture -->
           <div *ngIf="isAddForm" class="form-group">
             <label for="picture">Image</label>
-            <input type="text" class="form-control" id="picture"
-                    required
-                    pattern="^https:\/\/assets\.pokemon\.com\/assets\/cms2\/img\/pokedex\/detail\/\d{3}\.png$"
-                   [(ngModel)]="pokemon.picture" name="picture"
-                   #picture="ngModel">
-    
-              <div [hidden]="picture.valid || picture.pristine"
-                    class="card-panel red accent-1">
-                    L'image du pokémon est requise.
-              </div>
+            <p>
+              <label><input type="radio" class="form-control" name="pictureRadio" value="Custom" [(ngModel)]="pictureRadioChoice"><span>Custom</span></label>
+              <span *ngIf="pictureRadioChoice === 'Custom'">
+                <input type="text" class="form-control" id="picture"
+                      required
+                      pattern="^https:\/\/assets\.pokemon\.com\/assets\/cms2\/img\/pokedex\/detail\/\d{3}\.png$"
+                    [(ngModel)]="pokemon.picture" name="picture"
+                    #picture="ngModel">
+                <div [hidden]="picture.valid || picture.pristine"
+                      class="card-panel red accent-1">
+                      L'image du pokémon est requise.
+                </div>
+              </span>
+            </p>
+            <p>
+              <label><input type="radio" class="form-control" name="pictureRadio" value="Librairy" [(ngModel)]="pictureRadioChoice" (click)="updateStandardPicture()"><span>Standard from Librairy</span></label>
+              <span style="margin-left: 25px; vertical-align: middle !important;" *ngIf="pictureRadioChoice === 'Librairy'">
+                <i class="material-icons" style="vertical-align:30px; font-size: 30px; cursor: pointer;" (click)="previousPicture()">navigate_before</i>
+                <img [src]="pokemon.picture" width="100" height="100">
+                <i class="material-icons" style="vertical-align:30px; font-size: 30px; cursor: pointer" (click)="nextPicture()">navigate_next</i>
+                <i class="material-icons" style="vertical-align:30px; font-size: 30px; cursor: pointer" (click)="autoFill()" title="Auto complète le formulaire avec les données du pokemon">autorenew</i>
+              </span>
+            </p>
             </div>
     
           <!-- Pokemon hp -->

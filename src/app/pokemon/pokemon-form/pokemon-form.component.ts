@@ -24,6 +24,10 @@ export class PokemonFormComponent implements OnInit {
   types:PokemonType[];
   //Boolean to determine and conditionned if it's an "add" or "update" instance of the form
   isAddForm:boolean;
+  //Contain the value of the picture choice radio button
+  pictureRadioChoice:string;
+  //CurrentPictureNumber (picture picker)
+  currentPictureNumber:number;
 
   /**
    * Constructor
@@ -41,6 +45,8 @@ export class PokemonFormComponent implements OnInit {
    */
   ngOnInit(): void {
     this.loader = true;
+    this.pictureRadioChoice = 'Librairy';
+    this.currentPictureNumber = 1;
     this.pokemonTypeService.getPokemonTypeList().subscribe(tl => this.subscribeGetTypes(tl));
     this.isAddForm = this.router.url.includes('/add');
   }
@@ -123,5 +129,49 @@ export class PokemonFormComponent implements OnInit {
       htmlFormValid = !(this.pokemon.types.length > 0);
     }
     return htmlFormValid;
+  }
+
+  /**
+   * Go to the next Pokemon Picture
+   */
+  previousPicture() {
+    if (this.currentPictureNumber > 1)
+      this.currentPictureNumber--;
+
+    this.updateStandardPicture();
+  }
+
+  /**
+   * Go to the previous Pokemon Picture
+   */
+  nextPicture() {
+    if (this.currentPictureNumber < 500)
+      this.currentPictureNumber++;
+
+    this.updateStandardPicture();
+  }
+
+  /**
+   * Update the pokemon Picture based on the currentPictureNumber
+   */
+  updateStandardPicture() {
+    switch (true){
+      case this.currentPictureNumber < 10:
+        this.pokemon.picture = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/00${this.currentPictureNumber}.png`;
+        break;
+      case this.currentPictureNumber < 100:
+        this.pokemon.picture = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/0${this.currentPictureNumber}.png`;
+        break;
+      default:
+        this.pokemon.picture = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${this.currentPictureNumber}.png`;
+        break;
+    }
+  }
+
+  /**
+   * Auto Complete the pokemon form with data from the official pokemon website and base on the current Pokemon Picture Number
+   */
+  autoFill() {
+    //https://www.pokemon.com/fr/pokedex/010
   }
 }
