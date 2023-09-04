@@ -167,11 +167,4 @@ export class PokemonFormComponent implements OnInit {
         break;
     }
   }
-
-  /**
-   * Auto Complete the pokemon form with data from the official pokemon website and base on the current Pokemon Picture Number
-   */
-  autoFill() {
-    //https://www.pokemon.com/fr/pokedex/010
-  }
 }
