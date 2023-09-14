@@ -48,7 +48,7 @@ export class PokemonService {
       .pipe(
         tap((response) => this.log(response)),
         switchMap((response) => { return of(response.data) }),
-        catchError((error) => this.handleError(error, []))
+        catchError((error) => { this.handleError(error, []); throw error; })
       );
     }
     else {

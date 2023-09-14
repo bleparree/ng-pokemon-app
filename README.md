@@ -18,6 +18,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## TODO
 
 * Code TODO
+  * Front: Gérer les throw error et les affichages adéquat en cas d'erreur dans les call back
 * Autre TODO
   * Ajouter des tests unitaires
   * Ajouter des tests e2e

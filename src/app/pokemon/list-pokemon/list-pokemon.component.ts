@@ -36,7 +36,10 @@ export class ListPokemonComponent implements OnInit {
   ngOnInit(): void {
     this.loader = true;
     this.pokemonTypeService.getPokemonTypeList().subscribe(ptl => this.pokemonTypeList = ptl);
-    this.pokemonService.getPokemonList().subscribe(pokeList => { this.loader = false; this.pokemonList = pokeList; });
+    this.pokemonService.getPokemonList().subscribe({
+      next : pokeList => { this.loader = false; this.pokemonList = pokeList; },
+      error : error => { this.loader = true; this.pokemonList = []; }
+    });
   }
 
   /**
