@@ -70,7 +70,7 @@ export class PokemonService {
       return this.http.get<any>(ConfigJson.rest.apiUrl + `api/pokemon/${pokemonId}`, this.httpOptions)
       .pipe(
         tap((response) => this.log(response)),
-        switchMap((response) => { return of(response.data[0]) }),
+        switchMap((response) => { return of(response.data) }),
         catchError((error) => this.handleError(error, []))
       );
     }
