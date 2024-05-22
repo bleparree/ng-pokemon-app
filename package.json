@@ -6,7 +6,8 @@
     "start": "ng serve",
     "startnwatch": "ng serve --port 2222 --watch",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development"
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
@@ -23,14 +24,23 @@
     "jquery": "^3.7.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.13.0"
+    "zone.js": "^0.13.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.2.0",
     "@angular/cli": "~16.2.0",
     "@angular/compiler-cli": "^16.2.1",
+    "@types/jasmine": "^5.1.0",
     "@types/jquery": "^3.5.16",
+    "@types/karma": "^6.3.5",
+    "@types/node": "^20.8.4",
     "angular-in-memory-web-api": "^0.16.0",
+    "jasmine-core": "^5.1.1",
+    "karma": "^6.4.2",
+    "karma-chrome-launcher": "^3.2.0",
+    "karma-coverage": "^2.2.1",
+    "karma-jasmine": "^5.1.0",
+    "karma-jasmine-html-reporter": "^2.1.0",
     "typescript": "~5.1.3"
   }
 }
